@@ -51,6 +51,39 @@ class Basics extends Phaser.Scene {
             }
         })
 
+        // create pear tween chain
+        let pearTweenChain = this.tweens.chain({
+            targets: goodPear,
+            ease: 'Bounce.easeOut',
+            loop: 1,
+            paused: true,
+            tweens: [
+                {
+                    x: w - 64,
+                    duration: 500
+                },
+                {
+                    y: h -64,
+                    duration: 1000,
+                    ease: 'Sine.easeOut'
+                },
+                {
+                    x: 64,
+                    duration: 1500
+                },
+                {
+                    y: 64,
+                    duration: 1000
+                },
+            ],
+        })
+
+        //adding mouse input listener
+        this.input.on('pointerdown',() => {
+            goodPear.setPosition(64,64)
+            pearTweenChain.restart()
+        })
+
         // enable scene reload key
         this.reload = this.input.keyboard.addKey('R')
 
