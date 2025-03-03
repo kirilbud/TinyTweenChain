@@ -60,19 +60,23 @@ class Basics extends Phaser.Scene {
             tweens: [
                 {
                     x: w - 64,
+                    angle:  90,
                     duration: 500
                 },
                 {
                     y: h -64,
+                    angle:  180,
                     duration: 1000,
                     ease: 'Sine.easeOut'
                 },
                 {
                     x: 64,
+                    angle: -90,
                     duration: 1500
                 },
                 {
                     y: 64,
+                    angle: 0,
                     duration: 1000
                 },
             ],
@@ -82,6 +86,7 @@ class Basics extends Phaser.Scene {
         this.input.on('pointerdown',() => {
             goodPear.setPosition(64,64)
             pearTweenChain.restart()
+            goodPear.setAngle(0)
         })
 
         // enable scene reload key
